@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 export const userSignUp = Joi.object({
   email: Joi.string().trim().lowercase().required(),
@@ -42,5 +42,5 @@ export const homeworkValidationSchema = Joi.object({
   textFind: Joi.string().required(),
   pageNumber: Joi.string().required(),
   exercisePage: Joi.string().required(),
-  noteForParent: Joi.string().allow('').optional(),
+  noteForParent: Joi.string().allow("").optional(),
 });

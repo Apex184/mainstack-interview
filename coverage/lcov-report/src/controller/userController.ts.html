@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.42% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/14</span>
+                <span class='fraction'>3/15</span>
             </div>
         
             
@@ -87,7 +87,18 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -97,11 +108,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,32 +118,56 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { UserData, UserAtrributes } from "../models"
-import { Request, Response } from "express"
-import bcryptjs from "bcryptjs"
-import jwt from "jsonwebtoken"
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { UserData, UserAtrributes } from "../models";
+import { Request, Response } from "express";
+import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
 export const RegisterUser = <span class="fstat-no" title="function not covered" >async </span>(req: Request, res: Response) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const { firstName, lastName, email, password } = &lt;UserAtrributes&gt;<span class="cstat-no" title="statement not covered" >req.body;</span>
-        const findExistingUser = <span class="cstat-no" title="statement not covered" >await UserData.findOne({ email });</span>
-<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (findExistingUser) <span class="cstat-no" title="statement not covered" >return res.status(409).json({ success: false, message: "User already exists" });</span></span>
-        const passwordHashed = <span class="cstat-no" title="statement not covered" >await bcryptjs.hash(password, 10);</span>
-        const newUser = <span class="cstat-no" title="statement not covered" >new UserData({ firstName, lastName, email, password: passwordHashed });</span>
-        const user = <span class="cstat-no" title="statement not covered" >await newUser.save();</span>
-<span class="cstat-no" title="statement not covered" >        if (user) {</span>
-<span class="cstat-no" title="statement not covered" >            return res.status(201).json({ success: true, message: "User created successfully", user });</span>
-        } else {
-<span class="cstat-no" title="statement not covered" >            return res.status(500).json({ success: false, message: "Something went wrong" });</span>
-&nbsp;
-        }
-&nbsp;
-&nbsp;
-    } catch (error) {
-<span class="cstat-no" title="statement not covered" >        return res.status(500).json({ success: false, message: "Something went wrong" })</span>
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    const { firstName, lastName, email, password } = &lt;UserAtrributes&gt;<span class="cstat-no" title="statement not covered" >req.body;</span>
+    const findExistingUser = <span class="cstat-no" title="statement not covered" >await UserData.findOne({ email });</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (findExistingUser)</span>
+<span class="cstat-no" title="statement not covered" >      return res</span>
+        .status(409)
+        .json({ success: false, message: "User already exists" });
+    const passwordHashed = <span class="cstat-no" title="statement not covered" >await bcryptjs.hash(password, 10);</span>
+    const newUser = <span class="cstat-no" title="statement not covered" >new UserData({</span>
+      firstName,
+      lastName,
+      email,
+      password: passwordHashed,
+    });
+    const user = <span class="cstat-no" title="statement not covered" >await newUser.save();</span>
+<span class="cstat-no" title="statement not covered" >    if (user) {</span>
+<span class="cstat-no" title="statement not covered" >      return res</span>
+        .status(201)
+        .json({ success: true, message: "User created successfully", user });
+    } else {
+<span class="cstat-no" title="statement not covered" >      return res</span>
+        .status(500)
+        .json({ success: false, message: "Something went wrong" });
     }
-}
+  } catch (error) {
+<span class="cstat-no" title="statement not covered" >    return res</span>
+      .status(500)
+      .json({ success: false, message: "Something went wrong" });
+  }
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -142,7 +175,7 @@ export const RegisterUser = <span class="fstat-no" title="function not covered" 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-20T19:44:57.210Z
+                at 2024-03-20T19:57:54.918Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
