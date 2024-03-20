@@ -1,2 +1,2 @@
-export * from "./userController";
+export * from "./userController.js";
 //# sourceMappingURL=index.js.map

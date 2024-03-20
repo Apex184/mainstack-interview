@@ -1,11 +1,7 @@
 import { UserData, UserAtrributes } from "../models"
 import { Request, Response } from "express"
 import bcryptjs from "bcryptjs"
-
-
-
-
-
+import jwt from "jsonwebtoken"
 export const RegisterUser = async (req: Request, res: Response) => {
     try {
         const { firstName, lastName, email, password } = <UserAtrributes>req.body;

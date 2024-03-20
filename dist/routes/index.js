@@ -1,3 +1,3 @@
-export * from "./userRoute";
-export * from "./healthCheckRoute";
+export * from "./userRoute.js";
+export * from "./healthCheckRoute.js";
 //# sourceMappingURL=index.js.map

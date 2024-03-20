@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { logger } from '@/utills';
 import dotEnv from "dotenv";
-const MONGO_URL = process.env.MONGO_URL as string;
+
 
 dotEnv.config()
 mongoose.set("strictQuery", true);

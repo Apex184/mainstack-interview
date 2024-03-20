@@ -1,26 +1,27 @@
-import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
-import { AuthPayload } from '../DTO/Auth.dto';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'secret';
+// import { Request, Response } from 'express';
+// import jwt from 'jsonwebtoken';
+// import { AuthPayload } from '../DTO/Auth.dto';
 
-export const generateSignature = async (payload: AuthPayload) => {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
-};
+// const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 
-export const validateSignature = async (req: Request, res: Response) => {
-  const signature = req.get('Authorization')?.replace('Bearer ', '');
+// export const generateSignature = async (payload: AuthPayload) => {
+//   return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
+// };
 
-  if (!signature) {
-    return false;
-  }
+// export const validateSignature = async (req: Request, res: Response) => {
+//   const signature = req.get('Authorization')?.replace('Bearer ', '');
 
-  try {
-    const payload = jwt.verify(signature, JWT_SECRET);
-    res.locals.user = payload;
+//   if (!signature) {
+//     return false;
+//   }
 
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
+//   try {
+//     const payload = jwt.verify(signature, JWT_SECRET);
+//     res.locals.user = payload;
+
+//     return true;
+//   } catch (error) {
+//     return false;
+//   }
+// };

@@ -2,7 +2,9 @@ import 'dotenv/config';
 import { app } from './app';
 import { dbConnect } from '@/config';
 import { logger } from '@/utills';
+import dotEnv from 'dotenv';
 
+dotEnv.config();
 const PORT = process.env.PORT || 80;
 
 const start = async () => {

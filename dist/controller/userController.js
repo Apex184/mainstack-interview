@@ -1,4 +1,4 @@
-import { UserData } from "../models";
+import { UserData } from "../models/index.js";
 import bcryptjs from "bcryptjs";
 export const RegisterUser = async (req, res) => {
     try {
@@ -11,6 +11,9 @@ export const RegisterUser = async (req, res) => {
         const user = await newUser.save();
         if (user) {
             return res.status(201).json({ success: true, message: "User created successfully", user });
+        }
+        else {
+            return res.status(500).json({ success: false, message: "Something went wrong" });
         }
     }
     catch (error) {
