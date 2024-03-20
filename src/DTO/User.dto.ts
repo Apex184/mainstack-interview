@@ -15,8 +15,14 @@ export interface UserAttributes {
   firstName: string;
   lastName: string;
   email: string;
+  password: string;
   phoneNumber: string;
   image?: string;
   status?: UserStatus;
   isVerified?: boolean;
+}
+
+export interface UserLoginInput {
+  email: string;
+  password: string;
 }
