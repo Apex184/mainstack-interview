@@ -35,6 +35,9 @@ const userSchema = new Schema<UserAttributes>({
     type: Boolean,
     default: false,
   },
+  salt: { type: String, required: true },
+  otp: { type: String, required: true },
+  otp_expiry: { type: Date, required: true },
 });
 
-export const UserData = mongoose.model<UserAttributes>("User", userSchema);
+export const User = mongoose.model<UserAttributes>("User", userSchema);

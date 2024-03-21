@@ -7,7 +7,7 @@ import "express-async-errors";
 import helmet from "helmet";
 import { NotFoundError } from "./errors";
 import { errorHandler, httpLogger } from "./middleware";
-import { healthCheckerRouter } from "./routes";
+import { healthCheckerRouter, userRouter } from "./routes";
 
 export const app = express();
 dotEnv.config();
@@ -22,6 +22,7 @@ app.use(compression());
 app.use(httpLogger);
 
 app.use(healthCheckerRouter);
+app.use(userRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();
