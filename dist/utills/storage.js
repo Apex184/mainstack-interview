@@ -1,6 +1,6 @@
-import { v2 as cloudinary } from 'cloudinary';
-import multer from 'multer';
-import streamifier from 'streamifier';
+import { v2 as cloudinary } from "cloudinary";
+import multer from "multer";
+import streamifier from "streamifier";
 const storage = multer.memoryStorage();
 export const upload = multer({ storage });
 const API_KEYS = process.env.CLOUDINARY_API_KEY;
@@ -14,7 +14,7 @@ cloudinary.config({
 export const uploadToCloudinary = async (file, resourceType) => {
     const fileStream = streamifier.createReadStream(file.buffer);
     return new Promise((resolve, reject) => {
-        const uploadStream = cloudinary.uploader.upload_stream({ resource_type: resourceType === 'audio' ? 'raw' : resourceType }, (error, result) => {
+        const uploadStream = cloudinary.uploader.upload_stream({ resource_type: resourceType === "audio" ? "raw" : resourceType }, (error, result) => {
             if (error) {
                 reject(error);
             }
@@ -24,7 +24,7 @@ export const uploadToCloudinary = async (file, resourceType) => {
                     resolve(secureUrl);
                 }
                 else {
-                    reject(new Error('Error uploading file to Cloudinary'));
+                    reject(new Error("Error uploading file to Cloudinary"));
                 }
             }
         });

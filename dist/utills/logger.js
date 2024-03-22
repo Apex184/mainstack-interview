@@ -1,11 +1,11 @@
-import pino from 'pino';
+import pino from "pino";
 const transport = pino.transport({
     targets: [
         {
-            target: 'pino-pretty',
+            target: "pino-pretty",
             options: {
-                ignore: 'pid,hostname',
-                translateTime: 'SYS:standard',
+                ignore: "pid,hostname",
+                translateTime: "SYS:standard",
             },
         },
     ],

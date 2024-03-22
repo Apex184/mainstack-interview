@@ -1,12 +1,12 @@
-import { CustomError } from './custom-error.js';
+import { CustomError } from "./custom-error.js";
 export class NotFoundError extends CustomError {
     statusCode = 404;
     constructor() {
-        super('Route not found');
+        super("Route not found");
         Object.setPrototypeOf(this, NotFoundError.prototype);
     }
     serializeErrors() {
-        return [{ message: 'Not Found' }];
+        return [{ message: "Not Found" }];
     }
 }
 //# sourceMappingURL=not-found-error.js.map

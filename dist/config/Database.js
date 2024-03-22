@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { logger } from '../utills/index.js';
+import { logger } from "../utills/index.js";
 import dotEnv from "dotenv";
 dotEnv.config();
 mongoose.set("strictQuery", true);

@@ -1,12 +1,12 @@
-import { CustomError } from './custom-error.js';
+import { CustomError } from "./custom-error.js";
 export class NotAuthorizedError extends CustomError {
     statusCode = 401;
     constructor() {
-        super('Not Authorized');
+        super("Not Authorized");
         Object.setPrototypeOf(this, NotAuthorizedError.prototype);
     }
     serializeErrors() {
-        return [{ message: 'Not authorized' }];
+        return [{ message: "Not authorized" }];
     }
 }
 //# sourceMappingURL=not-authorized-error.js.map
