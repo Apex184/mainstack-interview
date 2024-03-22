@@ -1,9 +1,9 @@
-export interface ProductStatus {
-  ACTIVE: "active";
-  INACTIVE: "inactive";
-  BLOCKED: "blocked";
-  DELETED: "deleted";
-  SOLD: "sold";
+export enum ProductStatus {
+  PUBLISHED = "published",
+  UNPUBLISHED = "unpublished",
+  BLOCKED = "blocked",
+  DELETED = "deleted",
+  SOLD = "sold",
 }
 
 export interface ProductAttributes {
@@ -13,5 +13,6 @@ export interface ProductAttributes {
   quantity: number;
   price: number;
   image?: string;
-  status?: ProductStatus;
+  ProductStatus: ProductStatus;
+  productOwnerId: string;
 }

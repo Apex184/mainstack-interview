@@ -4,7 +4,10 @@ export const userSignUp = Joi.object({
     password: Joi.string().required(),
     firstName: Joi.string().trim().required(),
     lastName: Joi.string().trim().required(),
-    phoneNumber: Joi.string().required(),
+    phoneNumber: Joi.string()
+        .length(11)
+        .pattern(/^[0-9]+$/)
+        .required(),
     image: Joi.string().trim(),
     isVerified: Joi.boolean().default(false),
 });
@@ -32,4 +35,26 @@ export const userUpdateProfile = Joi.object({
     lastName: Joi.string().trim().required(),
     image: Joi.string().trim(),
 });
+export const productCreate = Joi.object({
+    name: Joi.string().trim().required(),
+    description: Joi.string().trim().required(),
+    quantity: Joi.number().required(),
+    price: Joi.number().required(),
+    image: Joi.string().trim(),
+});
+export const productUpdate = Joi.object({
+    name: Joi.string().trim(),
+    description: Joi.string().trim(),
+    quantity: Joi.number(),
+    price: Joi.number(),
+    image: Joi.string().trim(),
+});
+export const options = {
+    abortEarly: false,
+    errors: {
+        wrap: {
+            label: "",
+        },
+    },
+};
 //# sourceMappingURL=validateUtils.js.map

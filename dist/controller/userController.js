@@ -1,9 +1,9 @@
+import { UserStatus } from "../DTO/index.js";
 import { htmlTemplate } from "../mailer/index.js";
 import mailer from "../mailer/sendMail.js";
 import { generatePassword, validatePassword, generateSignature, generateSalt, GenerateOtp, logger, hashedOtpData, compareOTP, } from "../utills/index.js";
 import { User } from "../models/index.js";
 const fromUser = process.env.FROM;
-// const loginVerificationCode = process.env.LOGIN_VERIFICATION_CODE as string;
 const accountVerificationCode = process.env.ACCOUNT_VERIFICATION_CODE;
 export const UserSignUp = async (req, res) => {
     try {
@@ -28,7 +28,6 @@ export const UserSignUp = async (req, res) => {
         const hashedPassword = await generatePassword(password, salt);
         const { otp, otp_expiry } = GenerateOtp();
         const hashedOtp = await hashedOtpData(otp);
-        logger.info(hashedOtp);
         const user = await User.create({
             firstName,
             lastName,
@@ -62,6 +61,10 @@ export const UserSignUp = async (req, res) => {
     }
     catch (error) {
         logger.error(error);
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+        });
     }
 };
 export const UserVerify = async (req, res) => {
@@ -92,17 +95,13 @@ export const UserVerify = async (req, res) => {
                     message: "OTP Expired",
                 });
             }
-            const updatedUser = await User.findByIdAndUpdate({ _id: user._id }, { isVerified: true, status: "active" });
-            if (!updatedUser) {
-                return res.status(400).json({
-                    success: false,
-                    message: "Failed to Verify",
-                });
-            }
+            findUserDetails.isVerified = true;
+            findUserDetails.status = UserStatus.ACTIVE;
+            await findUserDetails.save();
             return res.status(200).json({
                 success: true,
                 message: "Successfully Verified",
-                data: updatedUser,
+                data: findUserDetails,
             });
         }
         else {

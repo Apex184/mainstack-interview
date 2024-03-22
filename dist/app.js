@@ -7,7 +7,7 @@ import "express-async-errors";
 import helmet from "helmet";
 import { NotFoundError } from "./errors/index.js";
 import { errorHandler, httpLogger } from "./middleware/index.js";
-import { healthCheckerRouter, userRouter } from "./routes/index.js";
+import { healthCheckerRouter, userRouter, productRouter } from "./routes/index.js";
 export const app = express();
 dotEnv.config();
 app.set("trust proxy", true);
@@ -20,6 +20,7 @@ app.use(compression());
 app.use(httpLogger);
 app.use(healthCheckerRouter);
 app.use(userRouter);
+app.use(productRouter);
 app.all("*", async () => {
     throw new NotFoundError();
 });

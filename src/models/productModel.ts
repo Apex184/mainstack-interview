@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { ProductAttributes } from "@/DTO";
+import { ProductAttributes, ProductStatus } from "@/DTO";
 
 const productSchema = new Schema<ProductAttributes>({
   name: {
@@ -21,10 +21,21 @@ const productSchema = new Schema<ProductAttributes>({
   image: {
     type: String,
   },
-  status: {
+  productOwnerId: {
     type: String,
-    enum: ["active", "inactive", "blocked", "deleted", "sold"],
-    default: "inactive",
+    ref: "User",
+    required: true,
+  },
+  ProductStatus: {
+    type: String,
+    enum: [
+      ProductStatus.PUBLISHED,
+      ProductStatus.UNPUBLISHED,
+      ProductStatus.BLOCKED,
+      ProductStatus.DELETED,
+      ProductStatus.SOLD,
+    ],
+    default: ProductStatus.UNPUBLISHED,
   },
 });
 

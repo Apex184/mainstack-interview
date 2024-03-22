@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { UserAttributes } from "@/DTO";
+import { UserAttributes, UserStatus } from "@/DTO";
 
 const userSchema = new Schema<UserAttributes>({
   firstName: {
@@ -28,8 +28,13 @@ const userSchema = new Schema<UserAttributes>({
   },
   status: {
     type: String,
-    enum: ["active", "inactive", "blocked", "deleted"],
-    default: "inactive",
+    enum: [
+      UserStatus.ACTIVE,
+      UserStatus.INACTIVE,
+      UserStatus.BLOCKED,
+      UserStatus.DELETED,
+    ],
+    default: UserStatus.INACTIVE,
   },
   isVerified: {
     type: Boolean,

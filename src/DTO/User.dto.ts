@@ -9,6 +9,7 @@ export enum UserStatus {
   INACTIVE = "inactive",
   BLOCKED = "blocked",
   DELETED = "deleted",
+  SOLD = "sold",
 }
 
 export interface UserAttributes {
