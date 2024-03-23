@@ -25,7 +25,7 @@ export const UserSignUp = async (req: Request, res: Response) => {
       email,
     });
     if (existingEmail) {
-      return res.status(400).json({
+      return res.status(409).json({
         success: false,
         message: "Email already exists",
       });
@@ -33,7 +33,7 @@ export const UserSignUp = async (req: Request, res: Response) => {
 
     const existingPhoneNumber = await User.findOne({ phoneNumber });
     if (existingPhoneNumber) {
-      return res.status(400).json({
+      return res.status(409).json({
         success: false,
         message: "Phone number already exists",
       });
@@ -202,6 +202,11 @@ export const UserLogin = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email, verified: true });
+    if (user?.status === UserStatus.INACTIVE || user?.isVerified === false)
+      return res.status(401).json({
+        success: false,
+        message: "Your account has not been verified",
+      });
     if (user) {
       const isPasswordValid = await validatePassword(
         password,

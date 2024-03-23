@@ -1,3 +1,6 @@
-.env
+lib-cov
+node_modules/
+jspm_packages/
 dist
-.coverage
+.env
+coverage
