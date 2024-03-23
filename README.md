@@ -5,8 +5,8 @@ To run this app:
 # Get the code
 git clone git@github.com:Apex184/mainstack-interview.git
 
-# Go to Lago folder
-cd lago
+# Go to mainstack-interview folder
+cd mainstack-interview
 
 # Set up environment configuration
 follow the .env.example
