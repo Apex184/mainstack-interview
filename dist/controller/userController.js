@@ -54,7 +54,7 @@ export const UserSignUp = async (req, res) => {
             await mailer.sendEmail(mailOptions.from, mailOptions.to, mailOptions.subject, mailOptions.html);
             return res.status(201).json({
                 success: true,
-                message: "Your has been created successfully.An otp code has been sent to your email address.",
+                message: "Your account has been created successfully.An otp code has been sent to your email address.",
                 signature: signature,
             });
         }

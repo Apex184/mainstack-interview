@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { ProductStatus } from "../DTO/index.js";
 const productSchema = new Schema({
     name: {
         type: String,
@@ -19,10 +20,25 @@ const productSchema = new Schema({
     image: {
         type: String,
     },
-    status: {
+    category: {
         type: String,
-        enum: ["active", "inactive", "blocked", "deleted", "sold"],
-        default: "inactive",
+        required: true,
+    },
+    productOwnerId: {
+        type: String,
+        ref: "User",
+        required: true,
+    },
+    ProductStatus: {
+        type: String,
+        enum: [
+            ProductStatus.PUBLISHED,
+            ProductStatus.UNPUBLISHED,
+            ProductStatus.BLOCKED,
+            ProductStatus.DELETED,
+            ProductStatus.SOLD,
+        ],
+        default: ProductStatus.UNPUBLISHED,
     },
 });
 export const Product = mongoose.model("Product", productSchema);

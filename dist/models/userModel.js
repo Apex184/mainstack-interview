@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { UserStatus } from "../DTO/index.js";
 const userSchema = new Schema({
     firstName: {
         type: String,
@@ -26,8 +27,13 @@ const userSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ["active", "inactive", "blocked", "deleted"],
-        default: "inactive",
+        enum: [
+            UserStatus.ACTIVE,
+            UserStatus.INACTIVE,
+            UserStatus.BLOCKED,
+            UserStatus.DELETED,
+        ],
+        default: UserStatus.INACTIVE,
     },
     isVerified: {
         type: Boolean,

@@ -48,6 +48,7 @@ export const productCreate = Joi.object({
   description: Joi.string().trim().required(),
   quantity: Joi.number().required(),
   price: Joi.number().required(),
+  category: Joi.string().trim().required(),
   image: Joi.string().trim(),
 });
 

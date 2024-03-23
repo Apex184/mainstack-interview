@@ -21,6 +21,10 @@ const productSchema = new Schema<ProductAttributes>({
   image: {
     type: String,
   },
+  category: {
+    type: String,
+    required: true,
+  },
   productOwnerId: {
     type: String,
     ref: "User",

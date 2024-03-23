@@ -13,6 +13,7 @@ export interface ProductAttributes {
   quantity: number;
   price: number;
   image?: string;
+  category: string;
   ProductStatus: ProductStatus;
   productOwnerId: string;
 }
