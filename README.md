@@ -1,5 +1,8 @@
-Welcome to mainstack career!
+Welcome to Mainstack career!
 
-In order to run this app:
+To run this app:
 
 1. clone the repository
+git@github.com:Apex184/mainstack-interview.git
+
+
